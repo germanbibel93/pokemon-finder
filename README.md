@@ -4,8 +4,8 @@ An application used to search pokemons data form Pokeapi, built with React, Redu
 Airbnb configuration for Eslint and Prettier.
 ## Project Screen Shot(s)
 
-![Pokemon](https://ibb.co/yWbzjsK)
-![Pokemon](https://ibb.co/T0GLt9G)
+![Pokemon](https://i.ibb.co/3BLxZhV/Captura-de-Pantalla-2020-08-29-a-la-s-19-12-42.png)
+![Pokemon](https://i.ibb.co/3Fbzcgb/Captura-de-Pantalla-2020-08-29-a-la-s-19-12-54.png)
 
 ## Installation and Setup Instructions
 
@@ -17,10 +17,19 @@ Installation:
 
 `yarn`   
 
-To Start Server:
+To Start Dev Server:
 
 `yarn start`  
 
 To Visit:
 
 `localhost:3000`  
+
+To Build:
+
+`yarn build`  
+
+To Visit:
+`yarn global add serve`
+`serve -s build`
+`localhost:5000`  
