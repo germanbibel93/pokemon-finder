@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App M 1`] = `
+Object {
+  "classes": Object {
+    "root": "root",
+  },
+}
+`;
+
+exports[`Pokedex-test Pokemon search 1`] = `
+Object {
+  "classes": Object {
+    "root": "root",
+  },
+}
+`;

@@ -12,9 +12,9 @@ import {
 } from "@material-ui/core";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import axios from "axios";
 import { toFirstCharUppercase } from "../../constants";
-
+import { PokeApi } from '../../services/pokeApi';
+ 
 const useStyles = makeStyles((theme) => ({
   cardMedia: {
     margin: "auto",
@@ -47,24 +47,13 @@ const Pokedex = () => {
   const [filter, setFilter] = useState("");
   const [render, setRender] = useState(false);
 
+  const fetchPoke = async () => {
+    const newPokemonData = await PokeApi();
+    setPokemonData(newPokemonData);
+  }
+
   useEffect(() => {
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon?limit=807`)
-      .then(function (response) {
-        const { data } = response;
-        const { results } = data;
-        const newPokemonData = {};
-        results.forEach((pokemon, index) => {
-          newPokemonData[index + 1] = {
-            id: index + 1,
-            name: pokemon.name,
-            sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-              index + 1
-            }.png`,
-          };
-        });
-        setPokemonData(newPokemonData);
-      });
+    fetchPoke();
   }, []);
 
   const handleSearchChange = (e) => {
@@ -80,7 +69,7 @@ const Pokedex = () => {
     const { id, name, sprite } = pokemonData[pokemonId];
     return (
       <>
-        <Grid item xs={12} key={pokemonId}>
+        <Grid item xs={12} key={pokemonId} data-testid="pokedex-grid">
           <Card className={classes.root}>
             <CardMedia
               className={classes.cardMedia}
@@ -109,6 +98,9 @@ const Pokedex = () => {
             onChange={handleSearchChange}
             label="Buscar"
             variant="standard"
+            inputProps={{
+              'data-testid': 'search-textarea'
+            }}
           />
           <SearchIcon className={classes.searchIcon} />
         </div>

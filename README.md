@@ -33,3 +33,6 @@ To Visit:
 `yarn global add serve`
 `serve -s build`
 `localhost:5000`  
+
+To Test:
+`yarn test`  
